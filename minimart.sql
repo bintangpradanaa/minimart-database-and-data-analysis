@@ -1,10 +1,10 @@
 -- 1. Apa saja nama cabang dan nama kota yang memiliki data transaksi penjualan di minimart?
 SELECT 
-	DISTINCT mc.nama_cabang,
-  	mk.nama_kota
-FROM ms_cabang AS mc 
-JOIN ms_kota AS mk ON mk.kode_kota = mc.kode_kota 
-JOIN tr_penjualan AS tp ON tp.kode_cabang = mc.kode_cabang;
+	mc.nama_cabang, 
+	mk.nama_kota 
+FROM ms_cabang mc
+JOIN ms_kota mk ON  mc.kode_kota = mk.kode_kota 
+WHERE mc.kode_cabang IN (SELECT kode_cabang FROM tr_penjualan)
 
 
 
